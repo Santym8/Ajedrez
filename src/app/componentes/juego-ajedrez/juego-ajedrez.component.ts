@@ -12,7 +12,7 @@ export class JuegoAjedrezComponent implements OnInit {
 
   juego: Juego;
 
-  piezaSeleccinada: Pieza;
+  piezaSeleccinada: any;
   posiblesMovimietnos: number[][] = [];
 
 
@@ -30,21 +30,31 @@ export class JuegoAjedrezComponent implements OnInit {
   }
 
 
-  piezaSeleccionada(pieza: Peon, tablero: Tablero) {
+  piezaSeleccionada(pieza: any, tablero: Tablero) {
 
-    this.piezaSeleccinada = pieza
-    this.posiblesMovimietnos = pieza.movimientos(tablero);
+    if (pieza.nombre != "libre") {
+      this.piezaSeleccinada = pieza
+      this.posiblesMovimietnos = pieza.movimientos(tablero);
+    }
+
+
   }
 
   mover(newX: number, newY: number) {
-    this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
+    if (this.piezaSeleccinada) {
+      this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
+      this.piezaSeleccinada = null;
 
-    /*for (let i of this.posiblesMovimietnos) {
-      if (i[0] == newX && i[1] == newY) {
-        this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
-        break
-      }
-    }*/
+      /*for (let i of this.posiblesMovimietnos) {
+     if (i[0] == newX && i[1] == newY) {
+       this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
+       break
+     }
+   }*/
+    }
+
+
+
 
 
 
