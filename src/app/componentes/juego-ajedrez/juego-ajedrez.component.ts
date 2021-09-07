@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { empty } from 'rxjs';
-import { Juego, Peon, Pieza, Tablero } from './piezas';
+
+import { Juego } from './model/Juego';
+import { Tablero } from './model/Tablero';
 
 
 @Component({
@@ -51,11 +52,6 @@ export class JuegoAjedrezComponent implements OnInit {
       }
       this.piezaSeleccinada = null;
     }
-
-
-
-
-
 
 
   }
