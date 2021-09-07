@@ -42,15 +42,18 @@ export class JuegoAjedrezComponent implements OnInit {
 
   mover(newX: number, newY: number) {
     if (this.piezaSeleccinada) {
+      
+
+      /*for (let i of this.posiblesMovimietnos) {
+        if (i[0] == newX && i[1] == newY) {
+          this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
+          break
+        }
+      }*/
+
       this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
       this.piezaSeleccinada = null;
 
-      /*for (let i of this.posiblesMovimietnos) {
-     if (i[0] == newX && i[1] == newY) {
-       this.juego.moverPieza(this.piezaSeleccinada, newX, newY)
-       break
-     }
-   }*/
     }
 
 
