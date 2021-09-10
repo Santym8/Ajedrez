@@ -1,4 +1,5 @@
 import { CasillaLibre } from "./piezas/CasillaLibre";
+import { Peon } from "./piezas/Peon";
 import { Pieza } from "./piezas/Pieza";
 import { Reina } from "./piezas/Reina";
 import { Torre } from "./piezas/Torre";
@@ -22,7 +23,7 @@ export class Juego {
                 if (this.tablero.casillas[i][j].nombre == "Rey") {
                     if (Tablero.casillaAmenazada(this.tablero.casillas[i][j].jugador, i, j, this.tablero)) {
                         this.tablero.casillas[i][j].jaque = true;
-                    }else{
+                    } else {
                         this.tablero.casillas[i][j].jaque = false;
                     }
                 }
@@ -62,6 +63,41 @@ export class Juego {
                         this.tablero.casillas[7][5] = new Torre(7, 5, pieza.jugador);
                     }
                 }
+            }
+
+            //Elimina el peon al capturar al paso
+            if (pieza.nombre == "Peon") {
+                if (pieza.jugador == 0 && pieza.x == 3) {
+                    if (this.tablero.casillas[pieza.x][pieza.y - 1].nombre == "Peon" && this.tablero.casillas[pieza.x][pieza.y - 1].moviminetoNumero == 1) {
+                        if (newX == pieza.x - 1 && newY == pieza.y - 1) {
+                            this.tablero.casillas[pieza.x][pieza.y - 1] = new CasillaLibre()
+                        }
+
+                    }
+                    if (this.tablero.casillas[pieza.x][pieza.y + 1].nombre == "Peon" && this.tablero.casillas[pieza.x][pieza.y + 1].moviminetoNumero == 1) {
+                        if (newX == pieza.x - 1 && newY == pieza.y + 1) {
+                            this.tablero.casillas[pieza.x][pieza.y + 1] = new CasillaLibre()
+                        }
+
+                    }
+                }
+                if (pieza.jugador == 1 && pieza.x == 4) {
+
+                    if (this.tablero.casillas[pieza.x][pieza.y - 1].nombre == "Peon" && this.tablero.casillas[pieza.x][pieza.y - 1].moviminetoNumero == 1) {
+                        if (newX == pieza.x + 1 && newY == pieza.y - 1) {
+                            this.tablero.casillas[pieza.x][pieza.y - 1] = new CasillaLibre()
+                        }
+                    }
+                    if (this.tablero.casillas[pieza.x][pieza.y + 1].nombre == "Peon" && this.tablero.casillas[pieza.x][pieza.y + 1].moviminetoNumero == 1) {
+                        if (newX == pieza.x + 1 && newY == pieza.y + 1) {
+                            this.tablero.casillas[pieza.x][pieza.y + 1] = new CasillaLibre()
+                        }
+
+                    }
+
+                }
+
+                (pieza as Peon).moviminetoNumero += 1;
             }
 
             pieza.primerMovimineto = false;

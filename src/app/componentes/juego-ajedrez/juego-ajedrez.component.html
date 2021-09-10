@@ -1,7 +1,25 @@
+<div *ngIf="reyBlancoJaque||reyNegroJaque" class="jaque">
+    <h3>¡Jaque!</h3>
+</div>
+
 <div class="contenedor">
     <table id="tablero">
+
+        <tr>
+            <td class="borde"></td>
+            <td class="borde">A</td>
+            <td class="borde">B</td>
+            <td class="borde">C</td>
+            <td class="borde">D</td>
+            <td class="borde">E</td>
+            <td class="borde">F</td>
+            <td class="borde">G</td>
+            <td class="borde">H</td>
+            <td class="borde"></td>
+        </tr>
+
         <tr *ngFor="let fila of juego.tablero.casillas; let i = index">
-            <td style="text-align: center; font-size: 35px;">{{8-i}}</td>
+            <td s class="borde">{{8-i}}</td>
             <td *ngFor="let casilla of fila; let j = index" class="casilla" (mouseup)="mover(i,j)" (mousedown)="piezaSeleccionada(casilla, juego.tablero)" [ngClass]="{casillaNegra:casillaNegra(i,j)}">
                 <div *ngIf="casilla.jugador == 1">
                     <img src="assets\Media\PiezasNegras\Rey.png" *ngIf="casilla.nombre == 'Rey'" class="imagen" draggable="false">
@@ -20,22 +38,20 @@
                     <img src="assets\Media\PiezasBlancas\Torre.png" *ngIf="casilla.nombre == 'Torre'" class="imagen" draggable="false">
                 </div>
             </td>
+            <td class="borde">{{8-i}}</td>
         </tr>
-        <tr style="text-align: center; font-size: 30px;">
-            <td class="Letras"></td>
-            <td class="Letras">A</td>
-            <td class="Letras">B</td>
-            <td class="Letras">C</td>
-            <td class="Letras">D</td>
-            <td class="Letras">E</td>
-            <td class="Letras">F</td>
-            <td class="Letras">G</td>
-            <td class="Letras">H</td>
+        <tr>
+            <td class="borde"></td>
+            <td class="borde">A</td>
+            <td class="borde">B</td>
+            <td class="borde">C</td>
+            <td class="borde">D</td>
+            <td class="borde">E</td>
+            <td class="borde">F</td>
+            <td class="borde">G</td>
+            <td class="borde">H</td>
+            <td class="borde"></td>
         </tr>
     </table>
-    <div>
-        <h1>Rey Balnco jaque : {{reyBlancoJaque}}</h1>
-        <h1>Rey Negro jaque : {{reyNegroJaque}}</h1>
-    </div>
 
 </div>

@@ -98,5 +98,6 @@ export class JuegoAjedrezComponent implements OnInit {
       } else return false
     }
   }
-}
 
+
+}
