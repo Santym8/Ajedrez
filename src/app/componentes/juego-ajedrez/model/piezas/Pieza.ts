@@ -1,10 +1,12 @@
-export class Pieza {
+
+
+export class Pieza  {
 
     public x: number;
     public y: number;
     public primerMovimineto;
-    protected jugador: number
-    protected nombre;
+    public jugador: number
+    public nombre;
 
 
 
@@ -27,4 +29,6 @@ export class Pieza {
     asiganrNombre(nombre: string) {
         this.nombre = nombre;
     }
+
+   
 }

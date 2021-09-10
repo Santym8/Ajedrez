@@ -1,20 +1,29 @@
 .contenedor {
-    text-decoration: none;
+    margin: 5px auto;
 }
 
 #tablero {
-    margin: 2% auto;
+    margin: 1% auto;
 }
 
 .casilla {
-    text-align: center;
     width: 100px;
     height: 100px;
     border: solid black;
-    color: red;
+}
+
+.casillaNegra {
+    background-color: rgb(131, 130, 130);
+    width: 100px;
+    height: 100px;
 }
 
 .imagen {
     width: 90px;
     height: 90px;
+}
+
+.Letras {
+    width: 100px;
+    height: 100px;
 }

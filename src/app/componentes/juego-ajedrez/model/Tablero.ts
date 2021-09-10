@@ -8,7 +8,7 @@ import { Torre } from "./piezas/Torre";
 
 export class Tablero {
 
-    public casillas: any;
+    public casillas: any[][];
 
     constructor() {
         this.casillas = [
@@ -36,7 +36,7 @@ export class Tablero {
         return (this.casillas[x][y]).jugador
     }
 
-    casillaValida(x: number, y: number) {
+    public casillaValida(x: number, y: number) {
 
         if (x < this.casillas.length && x >= 0) {
             if (y < this.casillas.length && y >= 0) {
@@ -46,6 +46,33 @@ export class Tablero {
         return false
 
     }
+
+
+    public static casillaAmenazada(turnoJugador: number, x: number, y: number, tablero: Tablero): boolean {
+
+        let pieza;
+        let movimientos;
+
+
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+                pieza = tablero.casillas[i][j]
+                if (pieza.nombre != "libre" && pieza.nombre != "Rey") {
+                    if (pieza.jugador != turnoJugador) {
+                        movimientos = tablero.casillas[i][j].movimientos(tablero);
+                        for (let movimineto of movimientos) {
+                            if (movimineto[0] == x && movimineto[1] == y) {     
+                                return true;
+                            }
+                        }
+                    } 
+                } 
+            }
+        }
+        return false;
+    }
+
+
 
 
 }

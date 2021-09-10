@@ -9,10 +9,12 @@ import { JuegoAjedrezComponent } from './componentes/juego-ajedrez/juego-ajedrez
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    JuegoAjedrezComponent
+    JuegoAjedrezComponent,
+
   ],
   imports: [
     BrowserModule,

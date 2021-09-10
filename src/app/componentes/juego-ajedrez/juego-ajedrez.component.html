@@ -1,20 +1,8 @@
 <div class="contenedor">
     <table id="tablero">
-        <tr style="text-align: center; font-size: 35px;">
-            <td></td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-        </tr>
-
         <tr *ngFor="let fila of juego.tablero.casillas; let i = index">
-            <td style="text-align: center; font-size: 35px;">{{i}}</td>
-            <td *ngFor="let casilla of fila; let j = index" class="casilla" (mouseup)="mover(i,j)" (mousedown)="piezaSeleccionada(casilla, juego.tablero)">
+            <td style="text-align: center; font-size: 35px;">{{8-i}}</td>
+            <td *ngFor="let casilla of fila; let j = index" class="casilla" (mouseup)="mover(i,j)" (mousedown)="piezaSeleccionada(casilla, juego.tablero)" [ngClass]="{casillaNegra:casillaNegra(i,j)}">
                 <div *ngIf="casilla.jugador == 1">
                     <img src="assets\Media\PiezasNegras\Rey.png" *ngIf="casilla.nombre == 'Rey'" class="imagen" draggable="false">
                     <img src="assets\Media\PiezasNegras\Reina.png" *ngIf="casilla.nombre == 'Reina'" class="imagen" draggable="false">
@@ -22,9 +10,7 @@
                     <img src="assets\Media\PiezasNegras\Caballo.png" *ngIf="casilla.nombre == 'Caballo'" class="imagen" draggable="false">
                     <img src="assets\Media\PiezasNegras\Peon.png" *ngIf="casilla.nombre == 'Peon'" class="imagen" draggable="false">
                     <img src="assets\Media\PiezasNegras\Torre.png" *ngIf="casilla.nombre == 'Torre'" class="imagen" draggable="false">
-
                 </div>
-
                 <div *ngIf="casilla.jugador == 0">
                     <img src="assets\Media\PiezasBlancas\Rey.png" *ngIf="casilla.nombre == 'Rey'" class="imagen" draggable="false">
                     <img src="assets\Media\PiezasBlancas\Reina.png" *ngIf="casilla.nombre == 'Reina'" class="imagen" draggable="false">
@@ -34,19 +20,22 @@
                     <img src="assets\Media\PiezasBlancas\Torre.png" *ngIf="casilla.nombre == 'Torre'" class="imagen" draggable="false">
                 </div>
             </td>
-
         </tr>
-
-    </table>
-</div>
-
-
-
-<div style="font-size: 25px;">
-    <table>
-        <tr *ngFor="let movimiento of posiblesMovimietnos">
-            <td>{{movimiento[0]}}</td>
-            <td>{{movimiento[1]}}</td>
+        <tr style="text-align: center; font-size: 30px;">
+            <td class="Letras"></td>
+            <td class="Letras">A</td>
+            <td class="Letras">B</td>
+            <td class="Letras">C</td>
+            <td class="Letras">D</td>
+            <td class="Letras">E</td>
+            <td class="Letras">F</td>
+            <td class="Letras">G</td>
+            <td class="Letras">H</td>
         </tr>
     </table>
+    <div>
+        <h1>Rey Balnco jaque : {{reyBlancoJaque}}</h1>
+        <h1>Rey Negro jaque : {{reyNegroJaque}}</h1>
+    </div>
+
 </div>
